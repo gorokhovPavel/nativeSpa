@@ -2,6 +2,7 @@ import Component from '../../component.js';
 
 export default class ShoppingCart extends Component {
   constructor({ element }) {
+
     super({ element });
 
     this._items = ['1', '2', '3'];

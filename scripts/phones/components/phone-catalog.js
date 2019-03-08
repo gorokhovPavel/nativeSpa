@@ -1,35 +1,39 @@
-import Component from '../../component.js';
+import ComponentFun from '../../componentFun.js';
 
-export default class PhoneCatalog extends Component {
+export default PhoneCatalog;
 
-  constructor({ element }) {
+PhoneCatalog.prototype = Object.create( ComponentFun.prototype );
+PhoneCatalog.prototype.constructor = PhoneCatalog;
+
+function PhoneCatalog(){
+  
+  ComponentFun.apply(this, arguments);
+
+  this._phones = [];
+  this._render();
+
+  this.on('click', '[data-element="details-link"]', (event) => {
+
+    let phoneElement = event.delegateTarget.closest('[data-element="phone"]');
+    this.trigger('phone-selected', phoneElement.dataset.phoneId);
+  });
+
+  this.on('click', '[data-element="add-button"]', (event) => {
     
-    super({ element });
+    let phoneElement = event.delegateTarget.closest('[data-element="phone"]');
+    this.trigger('add', phoneElement.dataset.phoneId);
+  });
+}
 
-    this._phones = [];
+PhoneCatalog.prototype.showPhones = function (phones) {
+    
+  this._phones = phones;
+  this._render();
+}
 
-    this._render();
+PhoneCatalog.prototype._render = function() {
 
-    this.on('click', '[data-element="details-link"]', (event) => {
-      let phoneElement = event.delegateTarget.closest('[data-element="phone"]');
-
-      this.trigger('phone-selected', phoneElement.dataset.phoneId);
-    });
-
-    this.on('click', '[data-element="add-button"]', (event) => {
-      let phoneElement = event.delegateTarget.closest('[data-element="phone"]');
-
-      this.trigger('add', phoneElement.dataset.phoneId);
-    });
-  }
-
-  showPhones(phones) {
-    this._phones = phones;
-    this._render();
-  }
-
-  _render() {
-    this._element.innerHTML = `
+  this._element.innerHTML = `
       <ul class="phones">
         ${this._phones.map(phone => `
           
@@ -53,7 +57,7 @@ export default class PhoneCatalog extends Component {
                 data-element="add-button"
                 class="btn btn-success"
               >
-                Add
+                ADD
               </a>
             </div>
   
@@ -70,5 +74,4 @@ export default class PhoneCatalog extends Component {
         `).join('')}
       </ul>
     `;
-  }
 }

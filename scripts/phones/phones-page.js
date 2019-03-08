@@ -68,8 +68,8 @@ export default class PhonesPage {
     });
 
     this._viewer.on('add', (event) => {
+      
       let phoneId = event.detail;
-
       this._shoppingCart.addItem(phoneId);
     });
   }
