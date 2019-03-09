@@ -75,23 +75,24 @@ export default class PhonesPage {
   }
 
   _initFilters() {
+
     this._filters = new PhoneFilters({
-      element: this._element.querySelector('[data-component="phone-filters"]'),
+      element : this._element.querySelector('[data-component="phone-filters"]'),
     });
 
-    this._filters.on('sort', (event) => {
-      PhoneService.getPhones({ order: event.detail })
+    this._filters.sort = event => {
+      PhoneService.getPhones({ order: event })
         .then((sortedPhones) => {
           this._catalogue.showPhones(sortedPhones);
         });
-    });
+    };
 
-    this._filters.on('search', (event) => {
-      PhoneService.getPhones({ query: event.detail })
+    this._filters.search = event => {
+      PhoneService.getPhones({ query: event })
         .then((sortedPhones) => {
           this._catalogue.showPhones(sortedPhones);
         });
-    });
+    };
   }
 
   _initShoppingCart() {

@@ -1,21 +1,23 @@
-import Component from '../../component.js';
+import componentFun from '../../componentFun.js';
 
-export default class PhoneFilters extends Component {
-  constructor({ element }) {
-    super({ element });
+export default PhoneFilters;
 
-    this._render();
+function PhoneFilters(element){
 
-    window.handlePhonesSort = (event) => {
-      this.trigger('sort', event.target.value);
-    };
+  componentFun.apply(this, arguments);
 
-    window.handlePhonesSearch = (event) => {
-      this.trigger('search', event.target.value);
-    };
-  }
+  window.handlePhonesSort = (event) => {
 
-  _render() {
+    this.sort(event.target.value);
+  };
+  
+  window.handlePhonesSearch = (event) => {
+
+    this.search(event.target.value);
+  };
+  
+  this._render = function(){
+    
     this._element.innerHTML = `
       <p>
         Search:
@@ -34,4 +36,6 @@ export default class PhoneFilters extends Component {
       </p>
     `;
   }
+
+  this._render();
 }
