@@ -1,5 +1,9 @@
 export default ComponentFun;
   
+//Для примера сделал реализацию функционального и прототипного стиля
+//Оба компонента, phone-filters (функциональный) и phone-catalog (прототипный) 
+//реализуют эту функцию и расширяют ее функционал
+
 function ComponentFun( inElem ){
 
     this._element = inElem.element;
