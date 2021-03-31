@@ -5,7 +5,6 @@ const PROMISE_STATUS_FULFILLED = 'fulfilled';
 const PROMISE_STATUS_REJECTED = 'rejected';
 
 class MyPromise {
-
   constructor(behaviorFunction) {
     this._status = PROMISE_STATUS_PENDING;
     this._result = null;
@@ -14,7 +13,6 @@ class MyPromise {
 
     behaviorFunction(this._resolve.bind(this), this._reject.bind(this));
   }
-
   then(successCallback, errorCallback) {
     if (this._status === PROMISE_STATUS_PENDING) {
       successCallback && this._successCallbacks.push(successCallback);
