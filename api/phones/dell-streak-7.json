@@ -2,7 +2,7 @@
     "additionalFeatures": "Front Facing 1.3MP Camera", 
     "android": {
         "os": "Android 11", 
-        "ui": "Dell Stage"
+        "ui": "Dell"
     }, 
     "availability": [
         "T-Mobile"
