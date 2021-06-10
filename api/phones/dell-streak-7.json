@@ -1,7 +1,7 @@
 {
     "additionalFeatures": "Front Facing 1.3MP Camera", 
     "android": {
-        "os": "Android 2.2", 
+        "os": "Android 11", 
         "ui": "Dell Stage"
     }, 
     "availability": [
