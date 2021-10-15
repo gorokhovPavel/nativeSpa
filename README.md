@@ -1,7 +1,6 @@
 # js-20180510
 
 
-
 simple example with custom settings on native js
 
 npm install
